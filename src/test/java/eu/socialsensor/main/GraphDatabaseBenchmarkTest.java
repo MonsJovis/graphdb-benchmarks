@@ -15,10 +15,11 @@ public class GraphDatabaseBenchmarkTest
     @Test
     public void testGraphDatabaseBenchmark()
     {
+        logger.debug("debug level enabled.");
+        logger.debug("info level enabled.");
 
         GraphDatabaseBenchmark bench = new GraphDatabaseBenchmark(null /* inputPath */);
         try{
-            logger.debug("debug level enabled.");
             bench.run();
         }
         catch (Exception e)
