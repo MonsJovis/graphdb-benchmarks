@@ -3,6 +3,7 @@ target/*
 /target
 /data/*
 !/data/Amazon0601.txt
+!/data/Amazon0601-500.txt
 
 /.project
 /.gitignore
