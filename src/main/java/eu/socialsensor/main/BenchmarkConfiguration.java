@@ -31,6 +31,10 @@ public class BenchmarkConfiguration
     // Sparksee / DEX configuration
     private static final String LICENSE_KEY = "license-key";
 
+    // Neptune specific configuration
+    private static final String NEPTUNE = "neptune";
+    private static final String HOSTNAME = "hostname";
+
     // Titan specific configuration
     private static final String TITAN = "titan";
     private static final String BUFFER_SIZE = GraphDatabaseConfiguration.BUFFER_SIZE.getName();
@@ -111,6 +115,7 @@ public class BenchmarkConfiguration
     private final int dynamodbWorkerThreads;
     private final boolean dynamodbPrecreateTables;
     private final String dynamodbTablePrefix;
+    private final String neptuneHostname;
 
     public String getDynamodbCredentialsFqClassName()
     {
@@ -174,6 +179,9 @@ public class BenchmarkConfiguration
         bufferSize = titan.getInt(BUFFER_SIZE, GraphDatabaseConfiguration.BUFFER_SIZE.getDefaultValue());
         blocksize = titan.getInt(IDS_BLOCKSIZE, GraphDatabaseConfiguration.IDS_BLOCK_SIZE.getDefaultValue());
         pageSize = titan.getInt(PAGE_SIZE, GraphDatabaseConfiguration.PAGE_SIZE.getDefaultValue());
+
+        Configuration neptune = socialsensor.subset(NEPTUNE);
+        neptuneHostname = neptune.getString(HOSTNAME);
 
         // database storage directory
         if (!socialsensor.containsKey(DATABASE_STORAGE_DIRECTORY))
@@ -434,6 +442,8 @@ public class BenchmarkConfiguration
     {
         return pageSize;
     }
+
+    public String getNeptuneHostname() { return neptuneHostname; }
 
     public int getDynamodbWorkerThreads()
     {

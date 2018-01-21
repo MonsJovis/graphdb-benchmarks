@@ -115,8 +115,7 @@ public class NeptuneGraphDatabase extends GraphDatabaseBase<Iterator<Vertex>, It
         final Configuration conf = generateBaseTitanConfiguration(type, dbPath, batchLoading, bench);
         final Configuration storage = conf.subset(GraphDatabaseConfiguration.STORAGE_NS.getName());
 
-        storage.addProperty("hostname", "neptune.ec1718.test");
-        //storage.addProperty("transactions", Boolean.toString(batchLoading));
+        storage.addProperty("hostname", bench.getNeptuneHostname());
 
         return TitanFactory.open(conf);
     }
