@@ -31,13 +31,10 @@ public class FindNeighboursOfAllNodesBenchmark extends PermutingBenchmarkBase im
     public void benchmarkOne(GraphDatabaseType type, int scenarioNumber)
     {
         GraphDatabase<?,?,?,?> graphDatabase = Utils.createDatabaseInstance(bench, type);
-        logger.debug("graphDatabase.open()");
         graphDatabase.open();
         Stopwatch watch = new Stopwatch();
         watch.start();
-        logger.debug("graphDatabase.findAllNodeNeighbours()");
         graphDatabase.findAllNodeNeighbours();
-        logger.debug("graphDatabase.shutdown()");
         graphDatabase.shutdown();
         times.get(type).add((double) watch.elapsed(TimeUnit.MILLISECONDS));
     }
