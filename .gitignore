@@ -1,7 +1,9 @@
 target/*
 *.class
 /target
-/data
+/data/*
+!/data/Amazon0601.txt
+
 /.project
 /.gitignore
 /.settings
