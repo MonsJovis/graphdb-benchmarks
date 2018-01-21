@@ -51,9 +51,9 @@ public class NeptuneGraphDatabase extends GraphDatabaseBase<Iterator<Vertex>, It
     private BatchGraph<TitanGraph> batchGraph;
     public final BenchmarkConfiguration config;
 
-    public NeptuneGraphDatabase(GraphDatabaseType type, BenchmarkConfiguration config, File dbStorageDirectory)
+    public NeptuneGraphDatabase(BenchmarkConfiguration config, File dbStorageDirectory)
     {
-        super(type, dbStorageDirectory);
+        super(GraphDatabaseType.NEPTUNE, dbStorageDirectory);
         this.config = config;
     }
 

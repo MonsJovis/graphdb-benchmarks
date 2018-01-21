@@ -13,6 +13,7 @@ import java.util.Map.Entry;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import eu.socialsensor.graphdatabases.*;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
@@ -20,11 +21,6 @@ import org.apache.commons.math3.util.MathArrays;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import eu.socialsensor.graphdatabases.GraphDatabase;
-import eu.socialsensor.graphdatabases.Neo4jGraphDatabase;
-import eu.socialsensor.graphdatabases.OrientGraphDatabase;
-import eu.socialsensor.graphdatabases.SparkseeGraphDatabase;
-import eu.socialsensor.graphdatabases.TitanGraphDatabase;
 import eu.socialsensor.main.BenchmarkConfiguration;
 import eu.socialsensor.main.BenchmarkingException;
 import eu.socialsensor.main.GraphDatabaseType;
@@ -198,6 +194,10 @@ public class Utils
         else if (GraphDatabaseType.SPARKSEE == type)
         {
             graphDatabase = new SparkseeGraphDatabase(config, dbStorageDirectory);
+        }
+        else if (GraphDatabaseType.NEPTUNE == type)
+        {
+            graphDatabase = new NeptuneGraphDatabase(config, dbStorageDirectory);
         }
         else
         {
